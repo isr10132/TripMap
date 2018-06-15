@@ -16,7 +16,8 @@ $(function(){
 			console.log('index: ' + i);
 			console.log(eventsArray[i]);
 			console.log('title: ' + eventsArray[i].title);
-			console.log('time: ' + eventsArray[i].start.format());
+			console.log('start: ' + eventsArray[i].start.format());
+			console.log('end: ' + eventsArray[i].end.format());
 			console.log('description: ' + eventsArray[i].description);
 		}
 	});
@@ -74,15 +75,27 @@ $(function(){
         drop: function(data, allDay) {
 			var event = {
 				title: $(this).text(),
-	            backgroundColor: $(this).css('background-color'),
-	            borderColor: $(this).css('border-color'),
 	            description: $(this).data('description'),
 	            start: data.toISOString(),
-	            allDay: !data.hasTime()
+	            allDay: !data.hasTime(),
+	            backgroundColor: $(this).css('background-color'),
+	            borderColor: $(this).css('border-color')
 			}
 			$('#calendar').fullCalendar('renderEvent', event, true);
-        }
-        
+        },
+        select: function(start, end) {
+      	    var selectedObject = {
+  	      	    title: $('#selected-event').text(),
+	            description: $('#selected-event').data('description'),
+  	      	    start: start.format('YYYY-MM-DD HH:mm:ss'),
+  	      	    end: end.format('YYYY-MM-DD HH:mm:ss'),
+  	      	    allDay: !start.hasTime() && !end.hasTime(),
+  	      	    backgroundColor: $('#selected-event').css('background-color'),
+  	      	    borderColor:  $('#selected-event').css('border-color')
+      	    }
+      	    $('#calendar').fullCalendar('renderEvent', selectedObject, true);
+      	    $('#calendar').fullCalendar('unselect');
+      	},
     }); // end fullCalendar
 })
 
