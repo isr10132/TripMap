@@ -4,6 +4,17 @@
 .input-area {
 	margin: 20px;
 }
+.input-group {
+	margin-bottom: 10px;
+}
+.color-btn {
+	margin-top: 5px;
+	width: 30px;
+	height: 30px;
+}
+.event-input {
+	margin-bottom: 10px;
+}
 .red {
 	background-color: red;
 }
@@ -21,4 +32,22 @@
 	border-color:#00c0ef;
 	color:white;
 	position: relative;
+	margin-top: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 6px;
+}
+input[type="color"] {
+	-webkit-appearance: none;
+	border: none;
+	margin-top: 20px;
+	width: 32px;
+	height: 32px;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
 }

@@ -28,21 +28,26 @@
 		</div>
 		<div class="input-area col-xs-5">
 
-			<!-- /btn-group -->
 			<div class="input-group">
-				<input id="new-event" type="text" class="form-control"
+				<input id="new-event-title" type="text" class="form-control"
 					placeholder="Event Title">
-				<div class="input-group-btn">
-					<button id="add-new-event" type="button"
-						class="btn btn-primary btn-flat">Add</button>
-				</div>
 			</div>
+			<div class="input-group">
+				<input id="new-event-description" type="text" class="form-control"
+					placeholder="Description">
+			</div>
+			<button id="add-new-event" type="button"
+					class="btn btn-primary btn-flat">Add</button>
+
 			<div class='external-event' id='selected-event'>選擇事件...
 			</div>
+			<div class="color-btn-group">
+				<button class="red btn color-btn"></button>
+				<button class="green btn color-btn"></button>
+				<button class="blue btn color-btn"></button>
+			</div>
 			<div>
-				<button class="red btn color-btn">Red</button>
-				<button class="green btn color-btn">Green</button>
-				<button class="blue btn color-btn">Blue</button>
+				自訂顏色<input id="color-picker" type="color" value="#00c0ef">
 			</div>
 		</div>
 	</div>
