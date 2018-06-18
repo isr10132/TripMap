@@ -1,0 +1,60 @@
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type = "text/css">
+		html, body {
+		  height: 100%;
+		  width: 100%;
+		  margin: 0;
+		  padding: 0;
+		}
+		#map {
+		  height: 100%;
+		  width: 100%;
+		}
+	</style>
+	<script>
+		  var map;
+		  var a = -1;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: {
+      lat: 25.0336962,
+      lng: 121.5643673
+    }
+  });
+
+  var marker = new google.maps.Marker({
+    position: {
+      lat: 25.0336962,
+      lng: 121.5643673
+    },
+    map: map
+  });
+
+  var infowindow = new google.maps.InfoWindow({
+    content: '<h1>大家好</h1>'
+  });
+
+  marker.addListener('click',function(){
+    a = a * -1;
+    if(a > 0){
+      infowindow.open(map, marker);
+    }else{
+      infowindow.close();
+    }
+  });
+}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7x-cyi0tE9xAgHPzQc5EuPT8IkNwZ-Jc&callback=initMap"
+async defer></script>
+		
+	
+	</head>
+	<body>
+		<div id="map"></div>
+	</body>
+</html>

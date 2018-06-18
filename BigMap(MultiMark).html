@@ -1,0 +1,84 @@
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type = "text/css">
+		html, body {
+		  height: 100%;
+		  width: 100%;
+		  margin: 0;
+		  padding: 0;
+		}
+		#map {
+		  height: 100%;
+		  width: 100%;
+		}
+	</style>
+	<script>
+		    var map;
+			var a = -1;
+			var markers = [];
+			var infowindows = [];
+			var description = ["123","456","789","111","222"];
+			var position = [
+			  {label:'哈哈哈哈哈',lat:25.0336962,lng:121.5643673},
+			  {label:'哈哈哈哈哈哈哈哈哈哈',lat:25.0333698,lng:121.5641564},
+			  {label:'C',lat:25.033899,lng:121.564329},
+			  {label:'哈哈哈哈哈',lat:25.0338407,lng:121.5645269},
+			  {label:'E',lat:25.0336377,lng:121.5645727}
+			];
+			
+			function moveToLocation() {
+			
+			  map.panTo(new google.maps.LatLng(25.1508552,121.77268630000003)); 							 
+			
+			}
+			
+			function initMap() {
+			  map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 19,
+				center: {
+				  lat: 25.0336962,
+				  lng: 121.5643673
+				}
+			  });
+
+			  for (var i = 0; i < position.length; i++) {
+				addMarker(i);
+			  }
+			}
+			
+			function addMarker(e) {
+			  markers[e] = new google.maps.Marker({
+				position: {
+				  lat: position[e].lat,
+				  lng: position[e].lng
+				},
+				map: map,
+				label: position[e].label
+			  });
+			  
+			  infowindows[e] = new google.maps.InfoWindow({
+				content: '<h1>'+description[e]+'</h1>'
+			  });
+			  markers[e].addListener('click',function(){
+				a = a * -1;
+				if(a > 0){
+				  infowindows[e].open(map, markers[e]);
+				}else{
+				  infowindows[e].close();
+				}
+			  });
+			}
+			
+			
+		
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7x-cyi0tE9xAgHPzQc5EuPT8IkNwZ-Jc&callback=initMap"
+async defer></script>
+	</head>
+	<body>
+		<div id="map"></div>
+		<button onclick="moveToLocation();">move</button>
+	</body>
+</html>
