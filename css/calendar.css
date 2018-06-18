@@ -32,11 +32,14 @@
 	border-color:#00c0ef;
 	color:white;
 	position: relative;
-	margin-top: 40px;
 	height: 40px;
 	text-align: center;
 	line-height: 40px;
 	border-radius: 6px;
+}
+td {
+	border-collapse: collapse;
+	padding: 4px;
 }
 input[type="color"] {
 	-webkit-appearance: none;
@@ -50,4 +53,24 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 }
 input[type="color"]::-webkit-color-swatch {
 	border: none;
+}
+body {
+	font-family: Helvetica, Microsoft YaHei, LiHei Pro, TW-Kai;
+}
+fieldset {
+	margin-bottom: 40px;
+}
+.table-title {
+	background-color: lightblue;
+}
+.table-title td {
+	text-align: center;
+	font-weight: bold;
+	font-size: 150%;
+}
+.table-content td {
+	font-size: 120%;
+}
+#schedule-area {
+	margin: 30px;
 }
