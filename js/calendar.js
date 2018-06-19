@@ -2,43 +2,50 @@ var tA;
 var tB;
 var eventsArray = [];
 
-function initCalendar()
-{
-	// 外部事件可拖拉
-	$('#selected-event').draggable({
-        zIndex: 1070,
-        revert: true, // will cause the event to go back to its
-        revertDuration: 0  //  original position after the drag
-	});
-
-	// 取得所有 fc 上的 event
-	$('#get-events-btn').click(function(){
-    	// 將 eventsArray 按照日期排序
-		console.log(eventsArray);
-	});
-
-	// 更改 selected event 顏色
-	$('.color-btn').click(function(){
-		var tmpColor = $(this).css('background-color');
-		$('#selected-event').css({'background-color': tmpColor, 'border-color': tmpColor});
-	})
-
-	// 自訂顏色
-	$('#color-picker').change(function(){
-		var tmpColor = $(this).val();
-		$('#selected-event').css({'background-color': tmpColor, 'border-color': tmpColor});
+$(function(){
+    // 外部事件可拖拉
+    $('#selected-event').draggable({
+          zIndex: 1070,
+          revert: true, // will cause the event to go back to its
+          revertDuration: 0  //  original position after the drag
     });
 
-	// 使用者輸入完後 按下添加
-	$('#add-new-event').click(addEvent);
+    // 取得所有 fc 上的 event
+    $('#get-events-btn').click(function(){
+        // 將 eventsArray 按照日期排序
+      console.log(eventsArray);
+    });
 
-	// 使用者輸入完後 按下 Enter 可視為執行添加
-	$("#new-event-title,#new-event-description,#new-event-position").on('keyup', function (e) {
-	    if (e.keyCode == 13) {
-	        addEvent();
-	    }
-	});
+    // 更改 selected event 顏色
+    $('.color-btn').click(function(){
+      var tmpColor = $(this).css('background-color');
+      $('#selected-event').css({'background-color': tmpColor, 'border-color': tmpColor});
+    })
 
+    // 自訂顏色
+    $('#color-picker').change(function(){
+      var tmpColor = $(this).val();
+      $('#selected-event').css({'background-color': tmpColor, 'border-color': tmpColor});
+      });
+
+    // 使用者輸入完後 按下添加
+    $('#add-new-event').click(addEvent);
+
+    // 使用者輸入完後 按下 Enter 可視為執行添加
+    $("#new-event-title,#new-event-description,#new-event-position").on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            addEvent();
+        }
+    });
+
+    //綁定地址輸入框的keyup事件以即時重新定位
+    $("#new-event-position").bind("keyup",function(){ 
+      GetAddressMarker();
+    }); 
+})
+
+function initCalendar()
+{
 	$('#calendar').fullCalendar({
 		// 視圖的擺放
         header: {
@@ -131,11 +138,6 @@ function initCalendar()
         	setEventsArray();
         }
     }); // end fullCalendar
-
-	//綁定地址輸入框的keyup事件以即時重新定位
-	$("#new-event-position").bind("keyup",function(){ 
-		GetAddressMarker();
-	}); 
 }
 
 // 將使用者輸入的資訊弄成 event 並顯示在 selected event
