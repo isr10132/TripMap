@@ -5,13 +5,36 @@
 <title>行程地圖</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-<link href="default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<!-- Fullcalendar css -->
+<link rel='stylesheet' href='plugins/fullcalendar/fullcalendar.css' type="text/css" />
+<!-- Bootstrap css -->
+<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" type="text/css" />
+<!-- Calendar css -->
+<link rel='stylesheet' href='css/calendar.css' type="text/css" />
+<!-- Fullcalendar js -->
+<script src="plugins/jquery-3.3.1.min.js" type="text/javascript"></script>
+<!-- <script src='fullcalendar/lib/jquery.min.js'></script> -->
+<script src='plugins/fullcalendar/lib/moment.min.js'></script>
+<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"
+	type="text/javascript"></script>
+<script src='plugins/fullcalendar/fullcalendar.js'></script>
+<!-- Bootstrap js -->
+<script src="plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- Calendar js -->
+<script src="js/calendar.js" type="text/javascript"></script>
+<!-- MiniMap js -->
+<script src="js/minimap.js" type="text/javascript"></script>
+<!-- Map js -->
+<script src="js/map.js" type="text/javascript"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7x-cyi0tE9xAgHPzQc5EuPT8IkNwZ-Jc&callback=initializeMiniMap" async defer></script>
+
+<script src="js/index.js" type="text/javascript"></script>
 
 
 </head>
@@ -26,24 +49,84 @@
 	
 		<div id="menu" class="container ">
 			<ul class="nav navbar-nav">
-                <li class="active"><a data-toggle="tab" href="#calendar">Calendar</a></li>
-                <li><a data-toggle="tab" href="#map">Map</a></li>
-                <li><a data-toggle="tab" href="#resources">Resources</a></li>				
+                <li class="active"><a data-toggle="tab" href="#calendar-content" id="calendar-tab">Calendar</a></li>
+                <li><a data-toggle="tab" href="#map-content" id="map-tab">Map</a></li>
+                <li><a data-toggle="tab" href="#resources-content" id="resources-tab">Resources</a></li>				
             </ul>
 		</div> 	
 	</div>
-	<div id="page" class="container" style="height:600px;">
+	<div id="page" >
 		<div class="tab-content">
 		
-			<div id="calendar" class=" tab-pane fade in active">
-				1
+			<div id="calendar-content" class=" tab-pane fade in active">
+				<div class="row">
+					<div id="calendar-main" class="main-area col-xs-6">
+						<fieldset>
+							<legend>Calendar</legend>
+							<div id="calendar"></div>
+						</fieldset>
+					</div>
+					<div id="calendar-side" class="side-area col-xs-5">
+						<fieldset>
+							<legend>Schedule</legend>
+							<div class="container">
+								<div class="row">
+									<div class="col-xs-2">
+										<div class="input-group">
+											<input id="new-event-title" type="text" class="form-control"
+												placeholder="Title">
+										</div>
+										<div class="input-group">
+											<input id="new-event-description" type="text" class="form-control"
+												placeholder="Description">
+										</div>
+										<div class="input-group">
+											<input id="new-event-position" type="text" class="form-control"
+												placeholder="Position">
+										</div>
+										<button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
+									</div>
+									<div class="col-xs-2">
+										<div id="small-map" class=""></div>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend>Event</legend>
+							<div class='external-event' id='selected-event'>選擇事件...
+							</div>
+							<div class="color-btn-group">
+								<button class="red btn color-btn"></button>
+								<button class="green btn color-btn"></button>
+								<button class="blue btn color-btn"></button>
+							</div>
+							<div>
+								自訂顏色<input id="color-picker" type="color" value="#00c0ef">
+							</div>
+			 			</fieldset>
+					</div>
+				</div>
 			</div>
 			
-			<div id="map" class=" tab-pane fade ">
-				2
+			<div id="map-content" class=" tab-pane fade ">
+				<div class="row">
+					<div id="calendar-main" class="main-area col-xs-6">
+						<div id="map"></div>
+					</div>
+					<div id="calendar-side" class="side-area col-xs-5">
+						<div id="schedule-area">
+					    	<table id="schedule" border="3">
+								<tbody id="output">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
 			
-			<div id="resources" class=" tab-pane fade ">
+			<div id="resources-content" class=" tab-pane fade ">
 				3
 			</div>
 		</div>
