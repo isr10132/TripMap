@@ -14,7 +14,7 @@ $(document).on('click', '#calendar-tab', function(){
 // 切換到 Map 頁面
 $(document).on('click', '#map-tab', function(){
 	// 每次重新繪圖一次
-	$('#output').html('<tr class="table-title"><td>標題</td><td>開始</td><td>結束</td><td>內容</td><td>地點</td></tr>');
+	$('#output').html('<tr class="table-title"><td class="ta1">標題</td><td class="ta2">開始</td><td class="ta2">結束</td><td class="ta3">內容</td><td class="ta4">地點</td></tr>');
 	for (var i = 0; i < eventsArray.length; i++)
 	{
 		$('#output').append(
