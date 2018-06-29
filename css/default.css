@@ -577,5 +577,8 @@ ul.style3 .first {
 		text-align: center;
 		color: rgba(255,255,255,1);
 	}
+	#calendar{
+		background: #eff3f9;
+	}
 	
 
